@@ -19,17 +19,19 @@ class ViewController: UIViewController {
         reverbParameters.loadFactoryReverbPreset(.LargeHall)
 
         let node = AVAudioPlayerNode()
-        node.position = AVAudio3DPoint(x: 5, y: 0, z: 0)
+        node.position = AVAudio3DPoint(x: 0, y: 0, z: 2)
         node.reverbBlend = 0.2
         node.renderingAlgorithm = .HRTF
 
         let url = NSBundle.mainBundle().URLForResource("kennedy", withExtension: "mp3")!
         let file = try! AVAudioFile(forReading: url)
+        let buffer = AVAudioPCMBuffer(PCMFormat: file.processingFormat, frameCapacity: AVAudioFrameCount(file.length))
+        try! file.readIntoBuffer(buffer)
 
         engine.attachNode(node)
         print("format", file.fileFormat)
-        engine.connect(node, to: engine.mainMixerNode, format: engine.mainMixerNode.outputFormatForBus(0))
-        node.scheduleFile(file, atTime: nil, completionHandler: nil)
+        engine.connect(node, to: engine.mainMixerNode, format: buffer.format)
+        node.scheduleBuffer(buffer, atTime: nil, options: AVAudioPlayerNodeBufferOptions(rawValue: 0), completionHandler: nil)
         engine.prepare()
 
         do {
