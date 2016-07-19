@@ -65,7 +65,7 @@ class ViewController: UIViewController {
         let node = AVAudioPlayerNode()
 
         node.position = AVAudio3DPoint(x: 0, y: 0, z: 10)
-        node.reverbBlend = 0.2
+        node.reverbBlend = 0
         node.renderingAlgorithm = .HRTF
 
         let url = NSBundle.mainBundle().URLForResource("beep", withExtension: "wav")!
