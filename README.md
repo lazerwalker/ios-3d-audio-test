@@ -6,7 +6,7 @@ This isn't a perfect system for a few reasons. Some of them are:
 
 * For binaural audio, you really really want head tracking, not smartphone-in-pocket tracking
 * Apple's positional 3D audio system doesn't seem as robust as many proprietary third-party alternatives
-* The iOS magnetometer is notoriously noisy. Figuring out how to consistently orient the user in space isn't a problem I've tackled yet
+* The iOS magnetometer is notoriously noisy. Figuring out how to consistently orient the user in space isn't a problem I've tackled yet. Presumably, having the user manually calibrate (e.g. press a button to say "I'm now facing the -Z direction") is the right way to solve this, assuming you don't need a relation to true north (or, if working in a specific physical space, you can make the user calibrate relative to a known good direction). After I've done such calibration, I'd like to run tests to see what sort of drift occurs over time.
 * This works if you're holding your phone in front of you in portrait mode, with your screen either parallel to the ground or parallel to your torso. Ideally, it would let you put your phone in your pocket/purse.
 
 ## Some notes for myself
