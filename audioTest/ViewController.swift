@@ -38,6 +38,12 @@ class ViewController: UIViewController {
                     //      -PI/PI: due East
                     //      -PI/2: due North
                     //      PI/2: due South
+
+                    // Audio XYZ coordinates
+                    //  Z-axis: East-West (-Z = West)
+                    //  X-axis: North-South (+X = North)
+                    //  Y-axis: Top-Bottom (+Y = Up)
+
                     self.rollLabel.text = data.attitude.roll.description
                     self.pitchLabel.text = data.attitude.pitch.description
 
@@ -62,30 +68,38 @@ class ViewController: UIViewController {
         reverbParameters.enable = true
         reverbParameters.loadFactoryReverbPreset(.LargeHall)
 
-        let node = AVAudioPlayerNode()
+        let westNode = self.playSound("beep-c", atPosition: AVAudio3DPoint(x: 0, y: 0, z: 10))
+        let eastNode = self.playSound("beep-g", atPosition: AVAudio3DPoint(x: 0, y: 0, z: -10))
+        let northNode = self.playSound("beep-e", atPosition: AVAudio3DPoint(x: 10, y: 0, z: 0))
+        let southNode = self.playSound("beep-bb", atPosition: AVAudio3DPoint(x: -10, y: 0, z: 0))
+        let nodes = [westNode, eastNode, northNode, southNode]
 
-        node.position = AVAudio3DPoint(x: 0, y: 0, z: 10)
-        node.reverbBlend = 0
-        node.renderingAlgorithm = .HRTF
-
-        let url = NSBundle.mainBundle().URLForResource("beep", withExtension: "wav")!
-        let file = try! AVAudioFile(forReading: url)
-        let buffer = AVAudioPCMBuffer(PCMFormat: file.processingFormat, frameCapacity: AVAudioFrameCount(file.length))
-        try! file.readIntoBuffer(buffer)
-        node
-        engine.attachNode(node)
-        engine.connect(node, to: environment, format: buffer.format)
-        print("format", file.fileFormat)
         engine.connect(environment, to: engine.mainMixerNode, format: nil)
-        node.scheduleBuffer(buffer, atTime: nil, options: .Loops, completionHandler: nil)
         engine.prepare()
 
         do {
             try engine.start()
-            node.play()
+            nodes.map({ $0.play() })
             print("Started")
         } catch let e as NSError {
             print("Couldn't start engine", e)
         }
+    }
+
+    func playSound(file:String, withExtension ext:String = "wav", atPosition position:AVAudio3DPoint) -> AVAudioPlayerNode {
+        let node = AVAudioPlayerNode()
+        node.position = position
+        node.reverbBlend = 0.1
+        node.renderingAlgorithm = .HRTF
+
+        let url = NSBundle.mainBundle().URLForResource(file, withExtension: ext)!
+        let file = try! AVAudioFile(forReading: url)
+        let buffer = AVAudioPCMBuffer(PCMFormat: file.processingFormat, frameCapacity: AVAudioFrameCount(file.length))
+        try! file.readIntoBuffer(buffer)
+        engine.attachNode(node)
+        engine.connect(node, to: environment, format: buffer.format)
+        node.scheduleBuffer(buffer, atTime: nil, options: .Loops, completionHandler: nil)
+
+        return node
     }
 }

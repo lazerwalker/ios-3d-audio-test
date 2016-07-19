@@ -17,7 +17,10 @@
 		C65D44371D10A06C006A4595 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C65D44351D10A06C006A4595 /* Main.storyboard */; };
 		C65D44391D10A06C006A4595 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C65D44381D10A06C006A4595 /* Assets.xcassets */; };
 		C65D443C1D10A06C006A4595 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C65D443A1D10A06C006A4595 /* LaunchScreen.storyboard */; };
-		C6E84B3B1D3EBDAF004D4340 /* beep.wav in Resources */ = {isa = PBXBuildFile; fileRef = C6E84B3A1D3EBDAF004D4340 /* beep.wav */; };
+		C6E84B3E1D3EBE33004D4340 /* beep-c.wav in Resources */ = {isa = PBXBuildFile; fileRef = C6E84B3C1D3EBE33004D4340 /* beep-c.wav */; };
+		C6E84B3F1D3EBE33004D4340 /* beep-g.wav in Resources */ = {isa = PBXBuildFile; fileRef = C6E84B3D1D3EBE33004D4340 /* beep-g.wav */; };
+		C6E84B421D3EC2AB004D4340 /* beep-bb.wav in Resources */ = {isa = PBXBuildFile; fileRef = C6E84B401D3EC2AB004D4340 /* beep-bb.wav */; };
+		C6E84B431D3EC2AB004D4340 /* beep-e.wav in Resources */ = {isa = PBXBuildFile; fileRef = C6E84B411D3EC2AB004D4340 /* beep-e.wav */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,7 +36,10 @@
 		C65D44381D10A06C006A4595 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C65D443B1D10A06C006A4595 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C65D443D1D10A06C006A4595 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C6E84B3A1D3EBDAF004D4340 /* beep.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = beep.wav; sourceTree = "<group>"; };
+		C6E84B3C1D3EBE33004D4340 /* beep-c.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "beep-c.wav"; sourceTree = "<group>"; };
+		C6E84B3D1D3EBE33004D4340 /* beep-g.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "beep-g.wav"; sourceTree = "<group>"; };
+		C6E84B401D3EC2AB004D4340 /* beep-bb.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "beep-bb.wav"; sourceTree = "<group>"; };
+		C6E84B411D3EC2AB004D4340 /* beep-e.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "beep-e.wav"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,7 +84,10 @@
 		C65D44301D10A06C006A4595 /* audioTest */ = {
 			isa = PBXGroup;
 			children = (
-				C6E84B3A1D3EBDAF004D4340 /* beep.wav */,
+				C6E84B3C1D3EBE33004D4340 /* beep-c.wav */,
+				C6E84B401D3EC2AB004D4340 /* beep-bb.wav */,
+				C6E84B411D3EC2AB004D4340 /* beep-e.wav */,
+				C6E84B3D1D3EBE33004D4340 /* beep-g.wav */,
 				C604EB121D1206310071D9AA /* kennedy.mp3 */,
 				C604EB071D12026D0071D9AA /* colt45 */,
 				C65D44311D10A06C006A4595 /* AppDelegate.swift */,
@@ -149,13 +158,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C6E84B3B1D3EBDAF004D4340 /* beep.wav in Resources */,
 				C65D443C1D10A06C006A4595 /* LaunchScreen.storyboard in Resources */,
 				C65D44391D10A06C006A4595 /* Assets.xcassets in Resources */,
+				C6E84B3F1D3EBE33004D4340 /* beep-g.wav in Resources */,
 				C604EB0E1D12026D0071D9AA /* fire.mp3 in Resources */,
+				C6E84B431D3EC2AB004D4340 /* beep-e.wav in Resources */,
+				C6E84B3E1D3EBE33004D4340 /* beep-c.wav in Resources */,
 				C604EB0F1D12026D0071D9AA /* spin.mp3 in Resources */,
 				C604EB0D1D12026D0071D9AA /* dry.mp3 in Resources */,
 				C604EB0C1D12026D0071D9AA /* cock.mp3 in Resources */,
+				C6E84B421D3EC2AB004D4340 /* beep-bb.wav in Resources */,
 				C65D44371D10A06C006A4595 /* Main.storyboard in Resources */,
 				C604EB131D1206310071D9AA /* kennedy.mp3 in Resources */,
 			);
