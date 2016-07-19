@@ -12,6 +12,7 @@
 		C604EB0E1D12026D0071D9AA /* fire.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C604EB0A1D12026D0071D9AA /* fire.mp3 */; };
 		C604EB0F1D12026D0071D9AA /* spin.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C604EB0B1D12026D0071D9AA /* spin.mp3 */; };
 		C604EB131D1206310071D9AA /* kennedy.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C604EB121D1206310071D9AA /* kennedy.mp3 */; };
+		C63DF3631D1725FD001457CE /* beep.wav in Resources */ = {isa = PBXBuildFile; fileRef = C63DF3621D1725FD001457CE /* beep.wav */; };
 		C65D44321D10A06C006A4595 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65D44311D10A06C006A4595 /* AppDelegate.swift */; };
 		C65D44341D10A06C006A4595 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65D44331D10A06C006A4595 /* ViewController.swift */; };
 		C65D44371D10A06C006A4595 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C65D44351D10A06C006A4595 /* Main.storyboard */; };
@@ -25,6 +26,7 @@
 		C604EB0A1D12026D0071D9AA /* fire.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = fire.mp3; sourceTree = "<group>"; };
 		C604EB0B1D12026D0071D9AA /* spin.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = spin.mp3; sourceTree = "<group>"; };
 		C604EB121D1206310071D9AA /* kennedy.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = kennedy.mp3; sourceTree = "<group>"; };
+		C63DF3621D1725FD001457CE /* beep.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = beep.wav; path = ../../../Downloads/beep.wav; sourceTree = "<group>"; };
 		C65D442E1D10A06C006A4595 /* audioTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = audioTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C65D44311D10A06C006A4595 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C65D44331D10A06C006A4595 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -76,6 +78,7 @@
 		C65D44301D10A06C006A4595 /* audioTest */ = {
 			isa = PBXGroup;
 			children = (
+				C63DF3621D1725FD001457CE /* beep.wav */,
 				C604EB121D1206310071D9AA /* kennedy.mp3 */,
 				C604EB071D12026D0071D9AA /* colt45 */,
 				C65D44311D10A06C006A4595 /* AppDelegate.swift */,
@@ -152,6 +155,7 @@
 				C604EB0F1D12026D0071D9AA /* spin.mp3 in Resources */,
 				C604EB0D1D12026D0071D9AA /* dry.mp3 in Resources */,
 				C604EB0C1D12026D0071D9AA /* cock.mp3 in Resources */,
+				C63DF3631D1725FD001457CE /* beep.wav in Resources */,
 				C65D44371D10A06C006A4595 /* Main.storyboard in Resources */,
 				C604EB131D1206310071D9AA /* kennedy.mp3 in Resources */,
 			);

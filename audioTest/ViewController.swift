@@ -1,5 +1,6 @@
 import UIKit
 import AVFoundation
+import CoreMotion
 
 func delay(delay:Double, closure:()->()) {
     dispatch_after(
@@ -10,14 +11,20 @@ func delay(delay:Double, closure:()->()) {
         dispatch_get_main_queue(), closure)
 }
 
+func radToDeg(rad:Double) -> Float {
+    return Float(rad * 180.0 / M_PI)
+}
+
 class ViewController: UIViewController {
     let engine = AVAudioEngine()
     let environment = AVAudioEnvironmentNode()
 
+    let motionManager = CMMotionManager()
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        environment.listenerPosition = AVAudio3DPoint(x: 3.0, y: 0, z: 0)
+        environment.listenerPosition = AVAudio3DPoint(x: 0, y: 0, z: 0)
         environment.listenerAngularOrientation = AVAudioMake3DAngularOrientation(0.0, 0, 0)
 
         engine.attachNode(environment)
@@ -28,11 +35,11 @@ class ViewController: UIViewController {
         reverbParameters.loadFactoryReverbPreset(.LargeHall)
 
         let node = AVAudioPlayerNode()
-        node.position = AVAudio3DPoint(x: 0, y: 0, z: 2)
-        node.reverbBlend = 0.2
+        node.position = AVAudio3DPoint(x: 2.0, y: 0, z: 0)
+        node.reverbBlend = 0
         node.renderingAlgorithm = .HRTF
 
-        let url = NSBundle.mainBundle().URLForResource("kennedy", withExtension: "mp3")!
+        let url = NSBundle.mainBundle().URLForResource("beep", withExtension: "wav")!
         let file = try! AVAudioFile(forReading: url)
         let buffer = AVAudioPCMBuffer(PCMFormat: file.processingFormat, frameCapacity: AVAudioFrameCount(file.length))
         try! file.readIntoBuffer(buffer)
@@ -41,13 +48,8 @@ class ViewController: UIViewController {
         engine.connect(node, to: environment, format: buffer.format)
         print("format", file.fileFormat)
         engine.connect(environment, to: engine.mainMixerNode, format: nil)
-        node.scheduleBuffer(buffer, atTime: nil, options: AVAudioPlayerNodeBufferOptions(rawValue: 0), completionHandler: nil)
+        node.scheduleBuffer(buffer, atTime: nil, options: .Loops, completionHandler: nil)
         engine.prepare()
-
-        delay(5.0) { 
-            node.position = AVAudio3DPoint(x:0, y: 1, z: 100)
-            print("Moving")
-        }
 
         do {
             try engine.start()
@@ -56,7 +58,15 @@ class ViewController: UIViewController {
         } catch let e as NSError {
             print("Couldn't start engine", e)
         }
+
+        motionManager.startDeviceMotionUpdatesUsingReferenceFrame(.XTrueNorthZVertical, toQueue: NSOperationQueue.mainQueue()) { (motion, error) in
+            if let motion = motion {
+
+                let orientation = AVAudio3DAngularOrientation(yaw: radToDeg(motion.attitude.roll), pitch: radToDeg(motion.attitude.pitch), roll: radToDeg(motion.attitude.yaw))
+
+                print(orientation)
+                self.environment.listenerAngularOrientation = orientation
+            }
+        }
     }
-
 }
-
