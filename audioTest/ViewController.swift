@@ -17,12 +17,40 @@ func radToDeg(rad:Double) -> Float {
 
 class ViewController: UIViewController {
     let engine = AVAudioEngine()
+    let motionManager = CMMotionManager()
     let environment = AVAudioEnvironmentNode()
 
-    let motionManager = CMMotionManager()
+    @IBOutlet weak var yawLabel: UILabel!
+    @IBOutlet weak var pitchLabel: UILabel!
+    @IBOutlet weak var rollLabel: UILabel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        if motionManager.deviceMotionAvailable {
+            motionManager.deviceMotionUpdateInterval = 0.01
+            motionManager.startDeviceMotionUpdatesUsingReferenceFrame(.XTrueNorthZVertical, toQueue: NSOperationQueue.mainQueue()) { (data: CMDeviceMotion?, error: NSError?) in
+                if let data = data {
+
+                    // YAW: goes from -PI to PI
+                    // When phone is sitting on a table:
+                    //      0: Due West
+                    //      -PI/PI: due East
+                    //      -PI/2: due North
+                    //      PI/2: due South
+                    self.rollLabel.text = data.attitude.roll.description
+                    self.pitchLabel.text = data.attitude.pitch.description
+
+                    let yaw = radToDeg(data.attitude.yaw)
+                    self.yawLabel.text = yaw.description
+
+                    self.environment.listenerAngularOrientation = AVAudioMake3DAngularOrientation(yaw, 0, 0)
+                } else {
+                    print(error)
+                }
+            }
+        }
+
 
         environment.listenerPosition = AVAudio3DPoint(x: 0, y: 0, z: 0)
         environment.listenerAngularOrientation = AVAudioMake3DAngularOrientation(0.0, 0, 0)
@@ -35,8 +63,9 @@ class ViewController: UIViewController {
         reverbParameters.loadFactoryReverbPreset(.LargeHall)
 
         let node = AVAudioPlayerNode()
-        node.position = AVAudio3DPoint(x: 2.0, y: 0, z: 0)
-        node.reverbBlend = 0
+
+        node.position = AVAudio3DPoint(x: 0, y: 0, z: 10)
+        node.reverbBlend = 0.2
         node.renderingAlgorithm = .HRTF
 
         let url = NSBundle.mainBundle().URLForResource("beep", withExtension: "wav")!
@@ -57,16 +86,6 @@ class ViewController: UIViewController {
             print("Started")
         } catch let e as NSError {
             print("Couldn't start engine", e)
-        }
-
-        motionManager.startDeviceMotionUpdatesUsingReferenceFrame(.XTrueNorthZVertical, toQueue: NSOperationQueue.mainQueue()) { (motion, error) in
-            if let motion = motion {
-
-                let orientation = AVAudio3DAngularOrientation(yaw: radToDeg(motion.attitude.roll), pitch: radToDeg(motion.attitude.pitch), roll: radToDeg(motion.attitude.yaw))
-
-                print(orientation)
-                self.environment.listenerAngularOrientation = orientation
-            }
         }
     }
 }
