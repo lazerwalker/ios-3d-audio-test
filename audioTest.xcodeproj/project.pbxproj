@@ -7,11 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C604EB0C1D12026D0071D9AA /* cock.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C604EB081D12026D0071D9AA /* cock.mp3 */; };
-		C604EB0D1D12026D0071D9AA /* dry.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C604EB091D12026D0071D9AA /* dry.mp3 */; };
-		C604EB0E1D12026D0071D9AA /* fire.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C604EB0A1D12026D0071D9AA /* fire.mp3 */; };
-		C604EB0F1D12026D0071D9AA /* spin.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C604EB0B1D12026D0071D9AA /* spin.mp3 */; };
-		C604EB131D1206310071D9AA /* kennedy.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C604EB121D1206310071D9AA /* kennedy.mp3 */; };
 		C65D44321D10A06C006A4595 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65D44311D10A06C006A4595 /* AppDelegate.swift */; };
 		C65D44341D10A06C006A4595 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65D44331D10A06C006A4595 /* ViewController.swift */; };
 		C65D44371D10A06C006A4595 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C65D44351D10A06C006A4595 /* Main.storyboard */; };
@@ -24,11 +19,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		C604EB081D12026D0071D9AA /* cock.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = cock.mp3; sourceTree = "<group>"; };
-		C604EB091D12026D0071D9AA /* dry.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = dry.mp3; sourceTree = "<group>"; };
-		C604EB0A1D12026D0071D9AA /* fire.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = fire.mp3; sourceTree = "<group>"; };
-		C604EB0B1D12026D0071D9AA /* spin.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = spin.mp3; sourceTree = "<group>"; };
-		C604EB121D1206310071D9AA /* kennedy.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = kennedy.mp3; sourceTree = "<group>"; };
 		C65D442E1D10A06C006A4595 /* audioTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = audioTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C65D44311D10A06C006A4595 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C65D44331D10A06C006A4595 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -53,18 +43,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		C604EB071D12026D0071D9AA /* colt45 */ = {
-			isa = PBXGroup;
-			children = (
-				C604EB081D12026D0071D9AA /* cock.mp3 */,
-				C604EB091D12026D0071D9AA /* dry.mp3 */,
-				C604EB0A1D12026D0071D9AA /* fire.mp3 */,
-				C604EB0B1D12026D0071D9AA /* spin.mp3 */,
-			);
-			name = colt45;
-			path = ../colt45;
-			sourceTree = "<group>";
-		};
 		C65D44251D10A06C006A4595 = {
 			isa = PBXGroup;
 			children = (
@@ -88,8 +66,6 @@
 				C6E84B401D3EC2AB004D4340 /* beep-bb.wav */,
 				C6E84B411D3EC2AB004D4340 /* beep-e.wav */,
 				C6E84B3D1D3EBE33004D4340 /* beep-g.wav */,
-				C604EB121D1206310071D9AA /* kennedy.mp3 */,
-				C604EB071D12026D0071D9AA /* colt45 */,
 				C65D44311D10A06C006A4595 /* AppDelegate.swift */,
 				C65D44331D10A06C006A4595 /* ViewController.swift */,
 				C65D44351D10A06C006A4595 /* Main.storyboard */,
@@ -161,15 +137,10 @@
 				C65D443C1D10A06C006A4595 /* LaunchScreen.storyboard in Resources */,
 				C65D44391D10A06C006A4595 /* Assets.xcassets in Resources */,
 				C6E84B3F1D3EBE33004D4340 /* beep-g.wav in Resources */,
-				C604EB0E1D12026D0071D9AA /* fire.mp3 in Resources */,
 				C6E84B431D3EC2AB004D4340 /* beep-e.wav in Resources */,
 				C6E84B3E1D3EBE33004D4340 /* beep-c.wav in Resources */,
-				C604EB0F1D12026D0071D9AA /* spin.mp3 in Resources */,
-				C604EB0D1D12026D0071D9AA /* dry.mp3 in Resources */,
-				C604EB0C1D12026D0071D9AA /* cock.mp3 in Resources */,
 				C6E84B421D3EC2AB004D4340 /* beep-bb.wav in Resources */,
 				C65D44371D10A06C006A4595 /* Main.storyboard in Resources */,
-				C604EB131D1206310071D9AA /* kennedy.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
